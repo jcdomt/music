@@ -26,11 +26,23 @@ function addPlayerWithName(id,name) {
         play(id);
         now = 1;
     }
-    addToTableWithname(id,name);
+    addToTableWithName(id,name);
     addToList(id);
 }
 
-function addToTableWithname(id,name) {
+function addToTable(id) {
+    $.get(api_single,{
+        "id":id
+    },function(data) {
+        d=$.parseJSON(data);
+        ct = getCT(id);
+        text = "<tr id=\"player"+sum+"\"><td>"+d["name"]+"</td><td>"+ct+"</td></tr>";
+        playTable.innerHTML += text;
+        $("#playerlist").addClass("layui-show");
+    });
+}
+
+function addToTableWithName(id,name) {
         ct = getCT(id);
         text = "<tr id=\"player"+sum+"\"><td>"+name+"</td><td>"+ct+"</td></tr>";
         playTable.innerHTML += text;
@@ -50,7 +62,7 @@ function addPlayList(idd) {
             var num2 = str.indexOf("id=");
             str = str.substr(num2 + 3);
             id = str;
-            addPlayerWithName(id,data[i]["name"]);
+            addPlayerWithName(id,data[i]["name]"]);
             //await sleep(1);
         }
     })
