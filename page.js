@@ -49,7 +49,7 @@ function loadSong(id) {
 }
 
 function songRun() {
-    const ap = new APlayer({
+     ap = new APlayer({
         container: document.getElementById('aplayer'),
         //fixed: true,
         lrcType: 1,
@@ -62,4 +62,24 @@ function songRun() {
             lrc: l
         }]
     });
+    ap.on('ended', function () {
+        // 放完了，可以下一首
+        if(now +1 <= sum) {
+            now++;
+            play(list[now][0]);
+        }
+    });
 }
+
+function download(id) {
+    window.open(api_url+id);
+}
+
+function play(id) {
+    console.log("请求ID"+id);
+    loadSong(id);
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }

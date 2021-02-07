@@ -14,7 +14,9 @@ function search(str) {
     },function(data) {
         d = data["result"]["songs"];
         for(i=0;i<d.length;i++) {
-            text = "<tr onclick=\"onTableBtn(this);\" id="+d[i]["id"]+"><td>"+d[i]["id"]+"</td><td>"+d[i]["name"]+"</td><td>"+d[i]["artists"][0]["name"]+"</td><td>"+d[i]["album"]["name"]+"</td></tr>";
+            id = d[i]["id"];
+            ct = getCT(id);
+            text = "<tr onclick=\"\" id="+d[i]["id"]+"><td>"+d[i]["id"]+"</td><td>"+d[i]["name"]+"</td><td>"+d[i]["artists"][0]["name"]+"</td><td>"+d[i]["album"]["name"]+"</td><td>"+ct+"</td></tr>";
             searchTable.innerHTML += text;
         }
     });

@@ -15,7 +15,8 @@ function loadList(id) {
             var num2 = str.indexOf("id=");
             str = str.substr(num2 + 3);
             idd = str;
-            text = "<tr onclick=\"onTableBtn(this);\" id="+idd+"><td>"+idd+"</td><td>"+data[i]["name"]+"</td><td>"+data[i]["artist"]+"</td></tr>";
+            ct = getCT(id);
+            text = "<tr onclick=\"onTableBtn(this);\" id="+idd+"><td>"+idd+"</td><td>"+data[i]["name"]+"</td><td>"+data[i]["artist"]+"</td><td>"+ct+"</td></tr>";
             searchTable.innerHTML += text;
         }
     })
